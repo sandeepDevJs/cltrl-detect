@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
+<link rel="stylesheet" href="index.css"><link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <img src="watching.png" />
+    <div class="controls">
+        <h1 class="control">CTRL</h1>
+        <h1 class="control">+</h1>
+        <h1 class="control">C</h1>
+    </div>
+    <audio src="hot.mp3"></audio>
+</body>
+
+<script>
+
+    const audio = document.querySelector("audio");
+    const controls = document.querySelector(".controls");
+    document.querySelector("button").addEventListener("click", function (e) {
+        console.log("click")
+        party.confetti(this, {
+	count: party.variation.range(20, 40),
+});
+});
+    document.addEventListener("keydown", function (e) {
+        const key = e.key;
+        const isCtrlPressed = e.ctrlKey;
+
+        if(key === "c" && isCtrlPressed){
+             party.confetti(controls)
+            audio.currentTime = 0;
+            audio.play()
+        }
+    })
+</script>
+
+</html>
