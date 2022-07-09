@@ -43,7 +43,21 @@
 
     cards.forEach(cd => cd.addEventListener("click", handleCardClick))
 
+    function runInitialCardAnimation() {
+        an = anime({
+            targets: ".card",
+            top: [-20, 20],
+            direction: "alternate",
+            loop: true,
+            easing: "linear"
+        })
+    }
+
     function handleCardClick(e) {
+
+        if (an) {
+            an.remove(".card")
+        }
 
         an = anime({
             targets: ".card",
@@ -62,8 +76,10 @@
 
     audio.addEventListener("ended", function () {
         an.reset();
-        an = null;
+        runInitialCardAnimation()
     });
+
+    runInitialCardAnimation()
 
 
 </script>
