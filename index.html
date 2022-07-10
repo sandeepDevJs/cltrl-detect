@@ -12,6 +12,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/css/index.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"
@@ -35,13 +38,43 @@
     <audio src="/assets/laugh.mp3"></audio>
 </body>
 
+<footer>
+    <img src="/imgs/footer.png" />
+    <div data-social="instagram" class="social-card">
+        <i class="fa-brands fa-instagram"></i>
+    </div>
+    <div data-social="github" class="social-card">
+        <i class="fa-brands fa-github"></i>
+    </div>
+
+</footer>
+
 <script>
 
-    const cards = document.querySelectorAll(".card");
+    //grab elements
+    const card = document.querySelector(".card");
     const audio = document.querySelector("audio");
-    let an = null;
+    const instagram = document.querySelector(".social-card:nth-child(2)");
+    const github = document.querySelector(".social-card:last-child");
 
-    cards.forEach(cd => cd.addEventListener("click", handleCardClick))
+    //vars
+    let an = null;
+    const social_urls = {
+        instagram: "https://www.instagram.com/sutra_hub",
+        github: "https://github.com/sandeepDevJs/cltrl-detect",
+    }
+
+    //add listeners
+    card.addEventListener("click", handleCardClick);
+    instagram.addEventListener("click", handleSocialClick);
+    github.addEventListener("click", handleSocialClick);
+    window.onload = runInitialCardAnimation;
+
+    //handlers
+    function playAudio() {
+        audio.currentTime = 0;
+        audio.play();
+    }
 
     function runInitialCardAnimation() {
         an = anime({
@@ -68,9 +101,41 @@
                 { rotateY: 180, duration: 500 },
             ],
             complete: function (anim) {
-                audio.currentTime = 0;
-                audio.play();
+                playAudio()
             }
+        })
+    }
+
+    function handleSocialClick(e) {
+
+        playAudio();
+
+        const social = this.dataset.social;
+        const social_url = social_urls[social] || social_urls["github"];
+
+        const tl = anime.timeline({
+            easing: "linear",
+            complete: function (anim) {
+                anim.reset();
+                setTimeout(() => {
+                    window.open(social_url, "_blank");
+                }, 400);
+            }
+        });
+
+        tl.add({
+            targets: [".social-card", "footer img"],
+            scale: 1.2,
+            duration: 200,
+        });
+
+        tl.add({
+            targets: [".social-card", "footer img"],
+            translateX: [-5, 5],
+            loop: 6,
+            duration: 50,
+            direction: "alternate",
+            easing: "linear",
         })
     }
 
@@ -78,9 +143,6 @@
         an.reset();
         runInitialCardAnimation()
     });
-
-    runInitialCardAnimation()
-
 
 </script>
 

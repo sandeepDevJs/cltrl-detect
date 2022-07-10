@@ -138,3 +138,47 @@ body {
     height: 90%;
     border-radius: 15px;
 }
+
+/* FOOTER */
+
+footer {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer img {
+    position: absolute;
+    z-index: -1;
+    height: 300px;
+}
+
+.social-card {
+    margin-top: 4px;
+    width: fit-content;
+    height: fit-content;
+    padding: 15px;
+    background-color: black;
+}
+
+.social-card i {
+    color: #ffff;
+    font-size: 40px;
+}
+
+.social-card:nth-child(2) {
+    border-top-right-radius: 70px;
+    border-bottom-right-radius: 40px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 60px;
+}
+
+.social-card:last-child {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 60px;
+    border-top-left-radius: 70px;
+    border-bottom-left-radius: 40px;
+}
