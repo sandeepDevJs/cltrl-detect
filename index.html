@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sutra Hub: Magic Card</title>
+    <meta name="description" content="A Magic card">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,11 +36,10 @@
             </div>
         </div>
     </div>
-    <audio src="/assets/laugh.mp3"></audio>
+    <audio src="/assets/creamy.mp3"></audio>
 </body>
 
 <footer>
-    <img src="/imgs/footer.png" />
     <div data-social="instagram" class="social-card">
         <i class="fa-brands fa-instagram"></i>
     </div>
@@ -54,14 +54,14 @@
     //grab elements
     const card = document.querySelector(".card");
     const audio = document.querySelector("audio");
-    const instagram = document.querySelector(".social-card:nth-child(2)");
+    const instagram = document.querySelector(".social-card:first-child");
     const github = document.querySelector(".social-card:last-child");
 
     //vars
     let an = null;
     const social_urls = {
         instagram: "https://www.instagram.com/sutra_hub",
-        github: "https://github.com/sandeepDevJs/cltrl-detect",
+        github: "https://github.com/sandeepDevJs/magic-card",
     }
 
     //add listeners
@@ -113,30 +113,7 @@
         const social = this.dataset.social;
         const social_url = social_urls[social] || social_urls["github"];
 
-        const tl = anime.timeline({
-            easing: "linear",
-            complete: function (anim) {
-                anim.reset();
-                setTimeout(() => {
-                    window.open(social_url, "_blank");
-                }, 400);
-            }
-        });
-
-        tl.add({
-            targets: [".social-card", "footer img"],
-            scale: 1.2,
-            duration: 200,
-        });
-
-        tl.add({
-            targets: [".social-card", "footer img"],
-            translateX: [-5, 5],
-            loop: 6,
-            duration: 50,
-            direction: "alternate",
-            easing: "linear",
-        })
+        window.open(social_url, "_blank");
     }
 
     audio.addEventListener("ended", function () {

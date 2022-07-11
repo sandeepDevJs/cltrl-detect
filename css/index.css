@@ -7,6 +7,8 @@ body {
     background: url("../imgs/bg.jpg");
     background-size: cover;
     font-family: 'Secular One', sans-serif;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .box {
@@ -143,7 +145,7 @@ body {
 
 footer {
     position: fixed;
-    bottom: 20px;
+    bottom: 1px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -162,14 +164,17 @@ footer img {
     height: fit-content;
     padding: 15px;
     background-color: black;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 8px;
 }
 
 .social-card i {
-    color: #ffff;
+    color: #ff5733;
     font-size: 40px;
 }
 
-.social-card:nth-child(2) {
+/* .social-card:first-child {
     border-top-right-radius: 70px;
     border-bottom-right-radius: 40px;
     border-top-left-radius: 30px;
@@ -181,4 +186,4 @@ footer img {
     border-bottom-right-radius: 60px;
     border-top-left-radius: 70px;
     border-bottom-left-radius: 40px;
-}
+} */
