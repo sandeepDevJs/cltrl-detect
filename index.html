@@ -24,6 +24,9 @@
 </head>
 
 <body>
+    <div class="loader">
+        <h1>loading..</h1>
+    </div>
     <div class="box">
         <div class="card">
             <div class="front">
@@ -52,6 +55,7 @@
 <script>
 
     //grab elements
+    const loader = document.querySelector(".loader");
     const card = document.querySelector(".card");
     const audio = document.querySelector("audio");
     const instagram = document.querySelector(".social-card:first-child");
@@ -68,7 +72,10 @@
     card.addEventListener("click", handleCardClick);
     instagram.addEventListener("click", handleSocialClick);
     github.addEventListener("click", handleSocialClick);
-    window.onload = runInitialCardAnimation;
+    window.onload = function (params) {
+        runInitialCardAnimation();
+        loader.style.display="none";
+    }
 
     //handlers
     function playAudio() {
